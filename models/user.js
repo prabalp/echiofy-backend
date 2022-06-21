@@ -18,6 +18,28 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  number: {
+    type: Number,
+    required: true,
+  },
+  socialMedia: {
+    instaram: {
+      link: String,
+      folllowers: Number,
+    },
+    facebook: {
+      link: String,
+      folllowers: Number,
+    },
+    twitter: {
+      link: String,
+      folllowers: Number,
+    },
+    youtube: {
+      link: String,
+      folllowers: Number,
+    },
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);

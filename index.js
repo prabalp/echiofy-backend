@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const authRouter = require("./routes/auth");
+const postRouter = require("./routes/post");
 
 router.use(express.static(__dirname + "/public/"));
 
@@ -21,6 +22,7 @@ const URL = process.env.MONGODB_URI;
 
 //routes
 app.use("/auth", authRouter);
+app.use("/post", postRouter);
 
 app.get("/", (req, res) => {
   res.send("VIOSA API");
