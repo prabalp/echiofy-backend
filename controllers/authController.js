@@ -28,11 +28,11 @@ module.exports.UserSignup = async (req, res) => {
       password: newPassword,
     });
 
-    const token = generateToken(JSON.stringify(createUser._id));
+    // const token = generateToken(JSON.stringify(createUser._id));
 
     return res
       .status(200)
-      .json(successmessage("Registered Successfuly!", token));
+      .json(successmessage("Registered Successfuly!", createUser._id));
   } catch (err) {
     return res.status(400).json(errormessage(err.message));
   }
@@ -54,11 +54,11 @@ module.exports.UserLogin = async (req, res) => {
       return res.status(200).json(errormessage("Invalid Credentials"));
     }
 
-    const token = generateToken(JSON.stringify(user._id));
+    // const token = generateToken(JSON.stringify(user._id));
 
     return res
       .status(200)
-      .json(successmessage("Logged In Successfuly!", token));
+      .json(successmessage("Logged In Successfuly!", user._id));
   } catch (err) {
     return res.status(400).json(errormessage(err.message));
   }
