@@ -10,7 +10,7 @@ const {
 module.exports.UserSignup = async (req, res) => {
   try {
     const { email, password, name, number } = req.body;
-    console.log(req.body);
+    console.log("User Data", req.body);
     const user = await User.findOne({ email: email });
 
     if (user) {
