@@ -82,3 +82,5 @@ module.exports.ForgetPassword = async (req, res) => {
     return res.status(400).json(errormessage(err.message));
   }
 };
+
+module.exports.FacebookLogin = async () => {};
