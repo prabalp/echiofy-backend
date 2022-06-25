@@ -9,8 +9,8 @@ const {
 
 router.route("/user/login").post(UserLogin);
 router.route("/user/signup").post(UserSignup);
-router.route("/user/getuser").get(GetUser);
-router.route("/user/updateuser").post(UpdateUser);
+router.route("/user/getuser/:id").get(GetUser);
+router.route("/user/updateuser/:id").post(UpdateUser);
 
 router.route("/user/forgot-password").put(ForgetPassword);
 

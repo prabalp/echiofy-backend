@@ -7,7 +7,7 @@ const {
   errormessage,
 } = require("../middlewares/util");
 const post = require("../models/post");
-j;
+
 module.exports.GetUser = async (req, res) => {
   try {
     const user = await User.find({
@@ -34,7 +34,6 @@ module.exports.UpdateUser = async (req, res) => {
       name: name,
       email: email,
       number: number,
-      password: newPassword,
       socialMedia: {
         instagram: instagram,
         facebook: facebook,
