@@ -22,13 +22,17 @@ const PostSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  starts: {
+  stars: {
     type: Number,
     default: 0,
   },
   class: {
     type: String,
     required: true,
+  },
+  starsUser: {
+    type: Map,
+    of: Number,
   },
 });
 

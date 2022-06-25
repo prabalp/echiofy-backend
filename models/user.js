@@ -40,6 +40,10 @@ const UserSchema = new mongoose.Schema({
       folllowers: Number,
     },
   },
+  accountType: {
+    type: String,
+    default: "influencer",
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);

@@ -6,10 +6,66 @@ const {
   verifypassword,
   errormessage,
 } = require("../middlewares/util");
+const post = require("../models/post");
+j;
+module.exports.GetUser = async (req, res) => {
+  try {
+    const user = await User.find({
+      _id: req.params.id,
+    });
+    return res
+      .status(200)
+      .json(successmessage("User fetched successfully", user));
+  } catch (err) {
+    return res.status(400).json(errormessage(err.message));
+  }
+};
+
+module.exports.UpdateUser = async (req, res) => {
+  try {
+    const { email, name, number, instagram, facebook, twitter, youtube } =
+      req.body;
+
+    const filter = {
+      _id: req.params.id,
+    };
+
+    const update = {
+      name: name,
+      email: email,
+      number: number,
+      password: newPassword,
+      socialMedia: {
+        instagram: instagram,
+        facebook: facebook,
+        twitter: twitter,
+        youtube: youtube,
+      },
+    };
+    let doc = await User.findOneAndUpdate(filter, update, {
+      new: true,
+    });
+
+    // const token = generateToken(JSON.stringify(createUser._id));
+
+    return res.status(200).json(successmessage("Registered Successfuly!", doc));
+  } catch (err) {
+    return res.status(400).json(errormessage(err.message));
+  }
+};
 
 module.exports.UserSignup = async (req, res) => {
   try {
-    const { email, password, name, number } = req.body;
+    const {
+      email,
+      password,
+      name,
+      number,
+      instagram,
+      facebook,
+      twitter,
+      youtube,
+    } = req.body;
     console.log("User Data", req.body);
     const user = await User.findOne({ email: email });
 
@@ -26,6 +82,12 @@ module.exports.UserSignup = async (req, res) => {
       email: email,
       number: number,
       password: newPassword,
+      socialMedia: {
+        instagram: instagram,
+        facebook: facebook,
+        twitter: twitter,
+        youtube: youtube,
+      },
     });
 
     // const token = generateToken(JSON.stringify(createUser._id));
