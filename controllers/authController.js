@@ -8,6 +8,21 @@ const {
 } = require("../middlewares/util");
 const post = require("../models/post");
 
+module.exports.GetUsersByNameCategory = async (req, res) => {
+  try {
+    const users = await User.find({
+      name: req.body.name,
+      category: req.body.category,
+    });
+
+    return res
+      .status(200)
+      .json(successmessage("User fetched successfully", users));
+  } catch (err) {
+    return res.status(400).json(errormessage(err.message));
+  }
+};
+
 module.exports.GetUser = async (req, res) => {
   try {
     const user = await User.find({

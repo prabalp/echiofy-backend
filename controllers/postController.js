@@ -1,9 +1,30 @@
 const Post = require("../models/post");
 const { errormessage, successmessage } = require("../middlewares/util");
 
+module.exports.getPostByUserId = async (req, res) => {
+  try {
+    const user_id = req.params.id;
+    const post = await Post.find({ user: user_id });
+    return res.status(200).json(successmessage("Post found", post));
+  } catch (err) {
+    return res.status(400).json(errormessage(err.message));
+  }
+};
+
+//getTrendingPost
+module.exports.getTrendingPost = async (req, res) => {
+  try {
+    const category = req.body.category;
+    const post = await Post.find({ class: category }).sort({ stars: -1 });
+    return res.status(200).json(successmessage("Post found", post));
+  } catch (err) {
+    return res.status(400).json(errormessage(err.message));
+  }
+};
 module.exports.createPost = async (req, res) => {
   try {
     const { title, content, userid, post_class } = req.body;
+    // console.log(req.body);
     const img = req.file.path;
     const post = await Post.create({
       title: title,

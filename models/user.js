@@ -44,6 +44,16 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "influencer",
   },
+  folllowers: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  following: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  category: {
+    type: String,
+    default: "None",
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);
